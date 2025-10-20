@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, type User } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Session as SessionType, Participant, Player, CurrentPlayer, Role } from "@/types/database";
 import PlayerManagement from "@/components/PlayerManagement";
@@ -34,7 +34,7 @@ export default function Session() {
   const [session, setSession] = useState<SessionType | null>(null);
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [currentPlayer, setCurrentPlayer] = useState<CurrentPlayer | null>(null);
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [userParticipant, setUserParticipant] = useState<Participant | null>(null);
   const [selectedRole, setSelectedRole] = useState<"P" | "D" | "C" | "A" | "ALL">("ALL");
